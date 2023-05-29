@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Vaccine Tracker | Website</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+    <!-- <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/include-html.min.js"></script> -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+
+    <style>
+        .header {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .slider-box {
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        #slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #slider img {
+            width: 100%;
+        }
+
+        .indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .indicators span {
+            width: 10px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .indicators span.active {
+            background-color: #333;
+        }
+
+
+        .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f2f2f2;
+        color: #333;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background-color: #ddd;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Vaccine Tracker Website</h1>
+    </div>
+
+    <div class="slider-box">
+        <div id="slider">
+            <img src="image2.jpg" alt="">
+            <img src="image1.jpg" alt="">
+            <!-- <img src="images/slide3.jpg" alt="">
+            <img src="images/slide4.jpg" alt=""> -->
+        </div>
+        <div class="indicators">
+            <span id="btn1" class="active"></span>
+            <span id="btn2"></span>
+            <!-- <span id="btn3"></span>
+            <span id="btn4"></span> -->
+        </div>
+    </div>
+
+    <script>
+        var slide = document.getElementById("slider");
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        // var btn3 = document.getElementById('btn3');
+        // var btn4 = document.getElementById('btn4');
+        var slides = slide.getElementsByTagName("img");
+        var indicators = document.getElementsByClassName("indicators")[0].getElementsByTagName("span");
+        var currentSlide = 0;
+
+        function showSlide(index) {
+            slide.style.transform = "translateX(-" + (index * 100) + "%)";
+            for (var i = 0; i < slides.length; i++) {
+                if (i === index) {
+                    indicators[i].classList.add("active");
+                } else {
+                    indicators[i].classList.remove("active");
+                }
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        var slideInterval = setInterval(nextSlide, 3000);
+
+        btn1.onclick = function () {
+            clearInterval(slideInterval);
+            currentSlide = 0;
+            showSlide(currentSlide);
+        };
+
+        btn2.onclick = function () {
+            clearInterval(slideInterval);
+            currentSlide = 1;
+            showSlide(currentSlide);
+        };
+
+        // btn3.onclick = function () {
+        //     clearInterval(slideInterval);
+        //     currentSlide = 2;
+        //     showSlide(currentSlide);
+        // };
+
+        // btn4.onclick = function () {
+        //     clearInterval(slideInterval);
+        //     currentSlide = 3;
+        //     showSlide(currentSlide);
+        // };
+    </script>
+
+    <br>
+    <br>
+    <br>
+
+    <img src="image 3.jpg" alt="" class="center">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>Search Your Nearest Vaccine Center</h2>
+    <br>
+    <br>
+    <p>Get the preview list of the nearest center and check availability of vaccine slots.</p>
+    <br>
+    
+    <br>
+    <div class="searchBox">
+        <input type="text" placeholder="Enter your Area Pincode" id="input" />
+        <button>
+            <img src="https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-search-icon-by-vexels.png"
+                alt="search" />
+        </button>
+    </div>
+
+    <div class="cards"></div>
+    
+
+    <script src="./script2.js"></script>
+    <!-- <script src="./min.js"></script> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+     
+    <div style="text-align:center">
+    <a href="https://forms.gle/ozontUYqMUz5AM4P8" class="button">Click here for Vaccine Registration</a>
+        
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <img src="image4.jpg" alt="" class="center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="result-container"></div>
+
+    <div class="Footer">
+        <h1>Copyright &copy; Made by Gayatri Bagul, Priyanka Bonde, Amisha Kulkarni All rights reserved</h1>
+    </div>
+
+</body>
+
+</html>
